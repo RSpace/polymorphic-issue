@@ -1,24 +1,13 @@
-# README
+Thanks for checking out this issue with polymorphic associations.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is tiny Rails 6.0 app, and the relevant code is in `app/models` and in `db/migrations`.
 
-Things you may want to cover:
+To see the problem for yourself and play around with it, clone this repo, bundle install, start the Rails console and run:
 
-* Ruby version
+```
+Organization.create(name: 'org')
+User.create(name: 'user')
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+User.first.organizations # SQL looks fine
+Organization.first.users # SQL has access_to_type condition twice
+```
